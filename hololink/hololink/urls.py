@@ -1,6 +1,6 @@
 from django.urls import path, include
 from django.contrib import admin
-from .views import index, d3demo, user_dashboard
+from .views import index
 from rest_framework import routers
 from api import views
 
@@ -10,18 +10,13 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('accounts.urls')),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('article/', include('article.urls')),
-    path('project/', include('project.urls')),
     path('', index, name='index'),
-    path('d3demo/', d3demo, name='d3demo'),
-    path('<username>', user_dashboard, name='user_dashboard')
 ]
 
 
 router = routers.DefaultRouter()
 router.register('users', views.UserViewSet)
 router.register('groups', views.GroupViewSet)
-router.register('articles', views.ArticleViewSet)
 
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.

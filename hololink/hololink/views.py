@@ -3,7 +3,6 @@ from django.urls import reverse
 from accounts.forms import SignUpWithEmailForm
 from django.core.mail import send_mail
 from django.conf import settings
-from project.models import Project
 import uuid
 
 
@@ -63,21 +62,8 @@ def index(request):
     context = {
         'form': form,
     }
-    if not request.user.is_authenticated:
-        return render(request, 'landing_page.html', context)
-    else:
-        return render(request, 'user_dashboard.html', context)
-
-def user_dashboard(request, username):
-    if not request.user.is_authenticated:
-        return redirect(reverse('login'))
     
-    
-    projects = Project.objects.filter(created_by=request.user).order_by('-created_at') #use -created_at to desc()
-    context = {
-        'projects': projects[:4],
-    }
-    return render(request, 'user_dashboard.html', context) 
+    return render(request, 'landing_page.html', context)
 
 
 
