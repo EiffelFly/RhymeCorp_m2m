@@ -2,7 +2,6 @@ from django.db import models
 from django.conf import settings
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
-import jsonfield
 
 def now():
     return timezone.localtime(timezone.now())
@@ -44,38 +43,10 @@ class Article(models.Model):
         verbose_name=_('Created at'),
     )
 
-    tokenize_output = jsonfield.JSONField(
-        verbose_name=_('Tokenize Output'),
-        null=True
-    )
-
-    ner_output = jsonfield.JSONField(
-        verbose_name=_('NER Output'),
-        blank=True,
-    )
-
     article_belongto_project = models.ManyToManyField(
         to='project.Project',
         verbose_name=_('Projects'),
         blank=True,
-    )
-
-    article_basestone_keyword_sum = models.IntegerField(
-        verbose_name=_('Basestone Keyword Amount'),
-        blank=True,
-        default=0
-    )
-
-    article_stellar_keyword_sum = models.IntegerField(
-        verbose_name=_('Stellar Keyword Amount'),
-        blank=True,
-        default=0
-    )
-
-
-    final_output = jsonfield.JSONField(
-        verbose_name=_('Final Output'),
-        null=True
     )
 
     def __str__(self):
