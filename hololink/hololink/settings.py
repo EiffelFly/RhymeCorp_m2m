@@ -73,8 +73,6 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'hololink.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
@@ -144,14 +142,3 @@ MEDIA_URL = '/uploads/'
 
 LOGOUT_REDIRECT_URL = '/'
 
-# SMTP things
-from secret.hololink.settings import (
-    EMAIL_BACKEND,
-    EMAIL_HOST,
-    EMAIL_USE_TLS,
-    EMAIL_PORT,
-    EMAIL_HOST_USER,
-    EMAIL_HOST_PASSWORD,
-    DEFAULT_FROM_EMAIL,
-    SERVER_EMAIL,
-)
