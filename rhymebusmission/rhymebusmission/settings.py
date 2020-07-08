@@ -81,6 +81,8 @@ DATABASES = {
     }
 }
 
+WSGI_APPLICATION = 'rhymebusmission.wsgi.application'
+
 DEBUG = True
 
 # Password validation
